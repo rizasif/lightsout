@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">LightsOut</string>
+    <string name="app_name">Lights Out</string>
+
+    <string name="on_add_message">Now you can click on the tray icon to enable power saving.
+        Your screen will turn off while your phone is facing a surface, like flipped on a table or inside your pocket.
+    Whenever you see your screen it will be back on. Cheers!</string>
+
+    <string name="on_click_message">To save battery, the screen will turn off while your phone is facing a surface, like flipped on a table or inside your pocket.
+    When you see your screen again it will turn back on. Cheers!</string>
+
+    <string name="permission_toast">We can\'t do it without your permission</string>
 </resources>

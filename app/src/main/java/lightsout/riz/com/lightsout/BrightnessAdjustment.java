@@ -1,17 +1,11 @@
 package lightsout.riz.com.lightsout;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.service.quicksettings.Tile;
 import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
-
-import static android.content.Context.SENSOR_SERVICE;
 
 /**
  * Created by rizas on 1/10/2018.
@@ -20,33 +14,79 @@ import static android.content.Context.SENSOR_SERVICE;
 public class BrightnessAdjustment {
     public static final String TAG = "RizTag: " + BrightnessAdjustment.class.getSimpleName();
 
-    public static void dropLight(Activity activity) throws Settings.SettingNotFoundException {
-//        WindowManager.LayoutParams params = activity.getWindow().getAttributes();
-//        params.screenBrightness = 0;
-//        activity.getWindow().setAttributes(params);
+    private static Status AppStatus = Status.Unknown;
 
-        ContentResolver cResolver = activity.getApplicationContext().getContentResolver();
+    private static PowerManager.WakeLock wl;
+    private static int brightnessValue;
+
+    public static void dropLight(Context context) throws Settings.SettingNotFoundException {
+        ContentResolver cResolver = context.getContentResolver();
         int brightnessMode = android.provider.Settings.System.getInt(cResolver,
                 android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE);
 
-        if (brightnessMode == android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-            android.provider.Settings.System.putInt(cResolver,
-                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
-                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+        if(AppStatus == Status.OFF || AppStatus == Status.Unknown){
+            brightnessValue = android.provider.Settings.System.getInt(cResolver,
+                    Settings.System.SCREEN_BRIGHTNESS);
+            TurnOn(brightnessMode, context, cResolver);
+//            tile.setState(Tile.STATE_ACTIVE);
+        } else {
+            TurnOff(cResolver);
+//            tile.setState(Tile.STATE_INACTIVE);
         }
-//        Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, 0);
-//        Settings.System.putInt(cResolver, Settings.System.SCREEN_OFF_TIMEOUT, 0);
 
-        SensorManager sensorManager = (SensorManager) activity.getSystemService(SENSOR_SERVICE);
-        Sensor proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+    }
 
-        
-        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+    private static void TurnOn(int brightnessMode, Context context, ContentResolver cResolver){
+//        if (brightnessMode == android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+//            android.provider.Settings.System.putInt(cResolver,
+//                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
+//                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+//        }
+//
+//        android.provider.Settings.System.putInt(cResolver,
+//                Settings.System.SCREEN_BRIGHTNESS,
+//                0);
 
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+
+        wl = pm.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, TAG);
         wl.acquire();
 
-        Log.i(TAG, "System Brightness Set");
+        AppStatus = Status.ON;
+
+        Log.i(TAG, "LightsOut Status ON");
+    }
+
+    private static void TurnOff(ContentResolver cResolver){
+//        android.provider.Settings.System.putInt(cResolver,
+//                Settings.System.SCREEN_BRIGHTNESS,
+//                brightnessValue);
+//
+//        android.provider.Settings.System.putInt(cResolver,
+//                android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
+//                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
+
+        wl.release();
+
+        AppStatus = Status.OFF;
+
+        Log.i(TAG, "LightsOut Status OFF");
+    }
+
+    public static void ForceStatus(boolean status_on){
+        if(status_on){
+            AppStatus=Status.ON;
+        }
+        else {
+            AppStatus=Status.OFF;
+        }
+    }
+
+    public static boolean isActive(){
+        if(AppStatus == Status.OFF || AppStatus == Status.Unknown)
+            return false;
+        else
+            return true;
     }
 
 }

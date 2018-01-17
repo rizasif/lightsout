@@ -25,11 +25,11 @@ public class MainActivity extends Activity {
         }
         else {
             Log.i(TAG, "Permission Available");
-            try {
-                BrightnessAdjustment.dropLight(this);
-            } catch (Settings.SettingNotFoundException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                BrightnessAdjustment.dropLight(this);
+//            } catch (Settings.SettingNotFoundException e) {
+//                e.printStackTrace();
+//            }
         }
 
         Log.i(TAG, "End onCreate");
@@ -38,11 +38,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try {
-            BrightnessAdjustment.dropLight(this);
-        } catch (Settings.SettingNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            BrightnessAdjustment.dropLight(this);
+//        } catch (Settings.SettingNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void requestPermission(){
@@ -84,11 +84,11 @@ public class MainActivity extends Activity {
 
                     // permission was granted, yay!
                     Log.i(TAG, "Permission Granted by User");
-                    try {
-                        BrightnessAdjustment.dropLight(this);
-                    } catch (Settings.SettingNotFoundException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        BrightnessAdjustment.dropLight(this);
+//                    } catch (Settings.SettingNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
 
                 } else {
 

@@ -1,26 +1,25 @@
-package lightsout.riz.com.lightsout; /**
+package lightsout.riz.com.lightsout;
+/**
  * Created by rizas on 1/10/2018.
  */
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-
-import java.util.Random;
-
-import lightsout.riz.com.lightsout.Constants;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
+import android.view.ContextThemeWrapper;
 
 public class TileDialog {
-    public static AlertDialog getDialog(Context context) {
+    public static AlertDialog getDialog(Context context, String title, String message, Drawable icon) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Fact");
-        Random random = new Random();
-        builder.setMessage(Constants.facts[random.nextInt(6)]);
+        AlertDialog.Builder builder =  new AlertDialog.Builder(context);
+        builder.setIcon(icon);
+        builder.setTitle(title);
+        builder.setMessage(message);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 dialogInterface.dismiss();
             }
         });
