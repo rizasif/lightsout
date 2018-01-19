@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     public static final String TAG = "RizTag: " + MainActivity.class.getSimpleName();
@@ -22,6 +23,8 @@ public class MainActivity extends Activity {
             Log.i(TAG, "Permission Required");
             Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:" + getPackageName()));
             startActivityForResult(intent, 200);
+            Toast.makeText(this, getResources().getString(R.string.permission_toast),
+                    Toast.LENGTH_LONG).show();
         }
         else {
             Log.i(TAG, "Permission Available");

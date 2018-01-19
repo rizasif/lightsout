@@ -1,12 +1,56 @@
 <resources>
     <string name="app_name">Lights Out</string>
 
-    <string name="on_add_message">Now you can click on the tray icon to enable power saving.
-        Your screen will turn off while your phone is facing a surface, like flipped on a table or inside your pocket.
-    Whenever you see your screen it will be back on. Cheers!</string>
+    <string name="on_add_message">
+        Now you can click on the tray icon to enable power saving.
+        Your screen will turn off while your phone is facing a surface, like flipped on a table or
+        inside your pocket.
+        Whenever you see your screen it will be back on. Cheers!
+    </string>
 
-    <string name="on_click_message">To save battery, the screen will turn off while your phone is facing a surface, like flipped on a table or inside your pocket.
-    When you see your screen again it will turn back on. Cheers!</string>
+    <string name="on_click_message">
+        To save battery, the screen will turn off while your phone is
+        facing a surface, like flipped on a table or inside your pocket.
+        When you see your screen again it will turn back on. Cheers!
+    </string>
 
     <string name="permission_toast">We can\'t do it without your permission</string>
+
+    <string name="introduction">
+        Lights Out will help save your battery by turning your screen off, wile keepig your
+        phone unlocked. While the app is active flip your phone on a surface or keep it in your
+        pocket and your screen will turn off. Your apps or services will keep running.
+        \nThe app can be accessed through quick settings in your notification tray.
+    </string>
+
+    <string name="heading1">How To Use:</string>
+
+    <string name="note">Note: </string>
+
+    <string name="post_intodiction">
+        Lights Out works with the proximity sensor of your phone.
+        Once activated anything blocking the sensor will cause the sceen to black out.
+        When your screen isn\'t facing a surface the screen will be back on again.
+    </string>
+
+    <string name="dump">
+        .................................................................
+        .................................................................
+        .................................................................
+        .................................................................
+        .................................................................
+        .................................................................
+    </string>
+
+    <string name="image_content_description_drag">
+        How to drag your quick settings.
+    </string>
+
+    <string name="image_content_description_open">
+        How to edit your quick settings.
+    </string>
+
+    <string name="toast_on">Activated</string>
+    <string name="toast_off">Deactivated</string>
+
 </resources>

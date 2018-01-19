@@ -59,7 +59,7 @@ public class MyTileService extends TileService {
                     Uri.parse("package:" + getPackageName()));
             startActivity(intent);
             Toast.makeText(this, getResources().getString(R.string.permission_toast),
-                    Toast.LENGTH_LONG);
+                    Toast.LENGTH_LONG).show();
         }else {
             if (!isSecure()) {
                 try {
@@ -94,11 +94,13 @@ public class MyTileService extends TileService {
             Log.d(TAG, "Setting State Active");
             tile.setState(Tile.STATE_ACTIVE);
             tile.updateTile();
+            Toast.makeText(this, getString(R.string.toast_on), Toast.LENGTH_SHORT).show();
         }
         else{
             Log.d(TAG, "Setting State Inactive");
             tile.setState(Tile.STATE_INACTIVE);
             tile.updateTile();
+            Toast.makeText(this, getString(R.string.toast_off), Toast.LENGTH_SHORT).show();
         }
     }
 
