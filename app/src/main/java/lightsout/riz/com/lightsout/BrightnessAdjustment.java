@@ -2,6 +2,7 @@ package lightsout.riz.com.lightsout;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
@@ -33,6 +34,8 @@ public class BrightnessAdjustment {
             TurnOff(cResolver);
 //            tile.setState(Tile.STATE_INACTIVE);
         }
+
+        closePanel(context);
 
     }
 
@@ -73,6 +76,11 @@ public class BrightnessAdjustment {
         Log.i(TAG, "LightsOut Status OFF");
     }
 
+    private static void closePanel(Context context){
+        Intent it = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        context.sendBroadcast(it);
+    }
+
     public static void ForceStatus(boolean status_on){
         if(status_on){
             AppStatus=Status.ON;
@@ -87,6 +95,15 @@ public class BrightnessAdjustment {
             return false;
         else
             return true;
+    }
+
+    public static  boolean isWakeLockActive(){
+        if(wl == null || !wl.isHeld()){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
 }
