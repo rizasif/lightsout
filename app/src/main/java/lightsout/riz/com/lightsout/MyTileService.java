@@ -27,8 +27,9 @@ public class MyTileService extends TileService {
     public void onTileAdded() {
         Log.d(TAG, "onTileAdded: ");
         tile = getQsTile();
-        tile.setState(Tile.STATE_INACTIVE);
-        tile.updateTile();
+//        tile.setState(Tile.STATE_INACTIVE);
+//        tile.updateTile();
+        UpdateStatus(false);
     }
 
     @Override
@@ -41,6 +42,9 @@ public class MyTileService extends TileService {
     public void onStartListening() {
         super.onStartListening();
         Log.d(TAG, "onStartListening");
+
+        tile = getQsTile();
+        UpdateStatus(false);
     }
 
     @Override
@@ -89,20 +93,29 @@ public class MyTileService extends TileService {
 
     private void beginBrightnessAdjustment() throws Settings.SettingNotFoundException {
         BrightnessAdjustment.dropLight(getBaseContext());
+        UpdateStatus(true);
+    }
 
+    private void UpdateStatus(){
+        UpdateStatus(false);
+    }
+
+    private void UpdateStatus(boolean verbose){
         if(BrightnessAdjustment.isWakeLockActive()) {
             Log.d(TAG, "Setting State Active");
             BrightnessAdjustment.ForceStatus(true);
             tile.setState(Tile.STATE_ACTIVE);
             tile.updateTile();
-            Toast.makeText(this, getString(R.string.toast_on), Toast.LENGTH_SHORT).show();
+            if(verbose)
+                Toast.makeText(this, getString(R.string.toast_on), Toast.LENGTH_SHORT).show();
         }
         else{
             Log.d(TAG, "Setting State Inactive");
             BrightnessAdjustment.ForceStatus(false);
             tile.setState(Tile.STATE_INACTIVE);
             tile.updateTile();
-            Toast.makeText(this, getString(R.string.toast_off), Toast.LENGTH_SHORT).show();
+            if(verbose)
+                Toast.makeText(this, getString(R.string.toast_off), Toast.LENGTH_SHORT).show();
         }
     }
 
