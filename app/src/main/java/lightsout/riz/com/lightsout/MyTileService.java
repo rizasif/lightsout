@@ -29,7 +29,9 @@ public class MyTileService extends TileService {
         tile = getQsTile();
 //        tile.setState(Tile.STATE_INACTIVE);
 //        tile.updateTile();
-        UpdateStatus(false);
+        if (Settings.System.canWrite(getApplicationContext())) {
+            UpdateStatus(false);
+        }
     }
 
     @Override
@@ -44,7 +46,9 @@ public class MyTileService extends TileService {
         Log.d(TAG, "onStartListening");
 
         tile = getQsTile();
-        UpdateStatus(false);
+        if (Settings.System.canWrite(getApplicationContext())) {
+            UpdateStatus(false);
+        }
     }
 
     @Override
