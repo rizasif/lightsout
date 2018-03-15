@@ -3,9 +3,11 @@ package lightsout.riz.com.lightsout;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.IBinder;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -22,6 +24,16 @@ public class MyTileService extends TileService {
     private static Tile tile;
     private static int ViewCount=0;
     private static final int MaxViews = 4;
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        Log.d(TAG, "onTileBind: ");
+        tile = getQsTile();
+        if (Settings.System.canWrite(getApplicationContext()) && tile!=null) {
+            UpdateStatus(false);
+        }
+        return super.onBind(intent);
+    }
 
     @Override
     public void onTileAdded() {
@@ -123,4 +135,21 @@ public class MyTileService extends TileService {
         }
     }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "Start Command");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        Log.d(TAG, "ReBind");
+        super.onRebind(intent);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.d(TAG, "Config Change");
+        super.onConfigurationChanged(newConfig);
+    }
 }

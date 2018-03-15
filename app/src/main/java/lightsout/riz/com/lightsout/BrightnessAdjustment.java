@@ -29,10 +29,8 @@ public class BrightnessAdjustment {
             brightnessValue = android.provider.Settings.System.getInt(cResolver,
                     Settings.System.SCREEN_BRIGHTNESS);
             TurnOn(brightnessMode, context, cResolver);
-//            tile.setState(Tile.STATE_ACTIVE);
         } else {
             TurnOff(cResolver);
-//            tile.setState(Tile.STATE_INACTIVE);
         }
 
         closePanel(context);
@@ -40,15 +38,6 @@ public class BrightnessAdjustment {
     }
 
     private static void TurnOn(int brightnessMode, Context context, ContentResolver cResolver){
-//        if (brightnessMode == android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-//            android.provider.Settings.System.putInt(cResolver,
-//                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
-//                    android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-//        }
-//
-//        android.provider.Settings.System.putInt(cResolver,
-//                Settings.System.SCREEN_BRIGHTNESS,
-//                0);
 
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
 
@@ -61,18 +50,9 @@ public class BrightnessAdjustment {
     }
 
     private static void TurnOff(ContentResolver cResolver){
-//        android.provider.Settings.System.putInt(cResolver,
-//                Settings.System.SCREEN_BRIGHTNESS,
-//                brightnessValue);
-//
-//        android.provider.Settings.System.putInt(cResolver,
-//                android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
-//                Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC);
 
         wl.release();
-
         AppStatus = Status.OFF;
-
         Log.i(TAG, "LightsOut Status OFF");
     }
 

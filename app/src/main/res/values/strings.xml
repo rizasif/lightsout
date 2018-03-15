@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Lights Out</string>
 
+    <string name="short_desc">Save your battery and keep your apps on at the same time</string>
+
     <string name="on_add_message">
         Now you can click on the tray icon to enable power saving.
         Your screen will turn off while your phone is facing a surface, like flipped on a table or
@@ -16,20 +18,34 @@
 
     <string name="permission_toast">We can\'t do it without your permission</string>
 
+    <string name="permission_desc">
+        Lights Out runs over your applications, in the quick settings tray.
+        We require your permission to do so. Please turn the settings knob to continue.
+    </string>
+
     <string name="introduction">
-        Lights Out will help save your battery by turning your screen off, wile keepig your
-        phone unlocked. While the app is active flip your phone on a surface or keep it in your
-        pocket and your screen will turn off. Your apps or services will keep running.
-        \nThe app can be accessed through quick settings in your notification tray.
+        Lights Out turns your screen off while keeping your apps alive.
+        When Lights Out is active it will detect if your phone is in your pocket or flipped on a
+        surface and automatically turn off your screen. Your apps or downloads will keep running.
+    </string>
+
+    <string name="howToDesc">
+        Follow the pictorial description of using Lights Out
+    </string>
+
+    <string name="usage">
+        The app can be accessed through quick settings in your notification tray.
     </string>
 
     <string name="heading1">How To Use:</string>
 
     <string name="note">Note: </string>
 
+    <string name="noteDesc">We\'ll tell you how we do it</string>
+
     <string name="post_intodiction">
         Lights Out works with the proximity sensor of your phone.
-        Once activated anything blocking the sensor will cause the sceen to black out.
+        Once activated anything blocking the sensor will cause the screen to black out.
         When your screen isn\'t facing a surface the screen will be back on again.
     </string>
 

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="lightsout.riz.com.lightsout.MainActivity"
     android:scrollbars="vertical"
-    android:overScrollMode="always">
+    android:overScrollMode="ifContentScrolls">
 
     <!--<include layout="@layout/display_layout"-->
         <!--android:layout_height="0dp"-->
@@ -28,37 +28,77 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_margin="20dp"
+            android:paddingBottom="20dp"
             android:orientation="vertical"
             android:focusableInTouchMode="true">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="5dp"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/short_desc"
+                android:layout_marginTop="3dp"
+                android:textSize="11dp"
+                android:textColor="@color/lightGrey"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/introduction"
-                android:id="@+id/P1"/>
+                android:id="@+id/P1"
+                android:layout_marginTop="6dp"
+                android:textSize="16dp"
+                android:textColor="@color/regGray"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/heading1"
-                android:layout_marginTop="10dp"
+                android:id="@+id/P2"
+                android:layout_marginTop="12dp"
                 android:textStyle="bold"
-                android:id="@+id/P2"/>
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/howToDesc"
+                android:layout_marginTop="3dp"
+                android:textSize="11dp"
+                android:textColor="@color/lightGrey"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/usage"
+                android:layout_marginTop="6dp"
+                android:textSize="16dp"
+                android:textColor="@color/regGray"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:id="@+id/P3">
+                android:layout_marginTop="4dp"
+                android:paddingTop="4dp"
+                android:paddingLeft="8dp"
+                android:id="@+id/P3"
+                android:background="@color/yellow">
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/edit_intro"
+                    android:layout_marginTop="8dp"
                     android:scaleType="fitStart"
                     android:layout_gravity="center"
                     android:contentDescription="@string/image_content_description_open"/>
@@ -68,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:src="@drawable/drag_intro"
+                    android:layout_marginTop="8dp"
                     android:scaleType="fitStart"
                     android:layout_gravity="center"
                     android:contentDescription="@string/image_content_description_drag"/>
@@ -76,24 +117,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="@string/note"
+                android:id="@+id/P4"
+                android:layout_marginTop="16dp"
                 android:textStyle="bold"
-                android:id="@+id/P4"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/post_intodiction"
-                android:id="@+id/P5"/>
+                android:text="@string/noteDesc"
+                android:layout_marginTop="3dp"
+                android:textSize="11dp"
+                android:textColor="@color/lightGrey"/>
 
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:text="@string/dump"-->
-                <!--android:id="@+id/P6"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/post_intodiction"
+                android:id="@+id/P5"
+                android:layout_marginTop="6dp"
+                android:textSize="16dp"
+                android:textColor="@color/regGray"/>
 
         </LinearLayout>
     <!--</ScrollView>-->
